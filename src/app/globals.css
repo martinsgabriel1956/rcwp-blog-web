@@ -124,18 +124,62 @@
   }
 }
 
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-teal-50: hsl(var(--teal-50));
+  --color-teal-100: hsl(var(--teal-100));
+  --color-teal-200: hsl(var(--teal-200));
+  --color-teal-300: hsl(var(--teal-300));
+  --color-teal-400: hsl(var(--teal-400));
+  --color-teal-500: hsl(var(--teal-500));
+  --color-teal-600: hsl(var(--teal-600));
+  --color-teal-700: hsl(var(--teal-700));
+  --color-coral-50: hsl(var(--coral-50));
+  --color-coral-100: hsl(var(--coral-100));
+  --color-coral-200: hsl(var(--coral-200));
+  --color-coral-500: hsl(var(--coral-500));
+  --color-coral-600: hsl(var(--coral-600));
+  --color-cream-50: hsl(var(--cream-50));
+  --color-cream-100: hsl(var(--cream-100));
+  --color-cream-200: hsl(var(--cream-200));
+}
+
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: "Playfair Display", Georgia, serif;
-    @apply font-semibold text-foreground tracking-tight;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    letter-spacing: -0.025em;
   }
 
   h1 {
@@ -200,7 +244,8 @@
 
   /* Card styles */
   .card {
-    @apply bg-card rounded-2xl border border-border p-6 shadow-md;
+    @apply bg-card rounded-2xl border p-6 shadow-md;
+    border-color: hsl(var(--border));
     background: var(--gradient-card);
   }
 
@@ -240,7 +285,8 @@
 
   /* Input styles */
   .input-field {
-    @apply w-full px-4 py-3 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200;
+    @apply w-full px-4 py-3 rounded-xl border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200;
+    border-color: hsl(var(--border));
   }
 
   /* Prose improvements */
@@ -249,11 +295,13 @@
   }
 
   .prose h2 {
-    @apply font-display text-2xl md:text-3xl mt-10 mb-4 text-foreground;
+    font-family: "Playfair Display", Georgia, serif;
+    @apply text-2xl md:text-3xl mt-10 mb-4 text-foreground;
   }
 
   .prose h3 {
-    @apply font-display text-xl md:text-2xl mt-8 mb-3 text-foreground;
+    font-family: "Playfair Display", Georgia, serif;
+    @apply text-xl md:text-2xl mt-8 mb-3 text-foreground;
   }
 
   .prose p {
