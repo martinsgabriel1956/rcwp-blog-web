@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Footer } from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
 import { dmSans, playfairDisplay } from "@/utils/fonts";
 
 export const metadata: Metadata = {
   title: {
-    default: "Revival Core Wellness Physiotherapy | Blog de Fisioterapia e Bem-Estar",
+    default:
+      "Revival Core Wellness Physiotherapy | Blog de Fisioterapia e Bem-Estar",
     template: "%s | Revival Core Wellness Physiotherapy",
   },
   description:
@@ -29,7 +32,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://revivalcorewellness.com"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://revivalcorewellness.com",
+  ),
   alternates: {
     canonical: "/",
   },
@@ -38,7 +43,8 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "/",
     siteName: "Revival Core Wellness Physiotherapy",
-    title: "Revival Core Wellness Physiotherapy | Blog de Fisioterapia e Bem-Estar",
+    title:
+      "Revival Core Wellness Physiotherapy | Blog de Fisioterapia e Bem-Estar",
     description:
       "Descubra dicas especializadas de fisioterapia, exercícios terapêuticos, prevenção de lesões e bem-estar físico. Conteúdo atualizado sobre saúde, reabilitação e qualidade de vida.",
     images: [
@@ -52,7 +58,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Revival Core Wellness Physiotherapy | Blog de Fisioterapia e Bem-Estar",
+    title:
+      "Revival Core Wellness Physiotherapy | Blog de Fisioterapia e Bem-Estar",
     description:
       "Descubra dicas especializadas de fisioterapia, exercícios terapêuticos, prevenção de lesões e bem-estar físico.",
     images: ["/og-image.jpg"],
@@ -79,8 +86,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${dmSans.variable} ${playfairDisplay.variable} antialiased`}>
+      <body
+        className={`${dmSans.variable} ${playfairDisplay.variable} antialiased`}
+      >
         {children}
+        <Footer />
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );
