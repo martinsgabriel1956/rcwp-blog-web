@@ -31,3 +31,7 @@ export interface BlogPost {
   metaTitle?: string;
   metaDescription?: string;
 }
+
+export type FeaturedPostProps = {
+  post: BlogPost;
+}

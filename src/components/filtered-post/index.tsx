@@ -1,28 +1,15 @@
 import { ArrowRight, Clock, Eye } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { BlogPost } from "./types";
-
-interface FeaturedPostProps {
-  post: BlogPost;
-}
+import type { FeaturedPostProps } from "./types";
 
 export function FeaturedPost({
   post,
 }: FeaturedPostProps) {
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("pt-BR", {
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-    });
-  };
-
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-background to-coral-50/30">
       <div className="container py-12 md:py-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="w-full grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="order-2 lg:order-1 animate-slide-up">
             <div className="flex items-center gap-3 mb-6">
               <span className={`badge badge-${post.category.color}`}>
@@ -52,6 +39,13 @@ export function FeaturedPost({
                 href={`/authors/${post.author.id}`}
                 className="flex items-center gap-3 group"
               >
+                <Image
+                  src={post.author.avatar}
+                  alt={post.author.name}
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 rounded-full"
+                />
                 <div className="text-left">
                   <p className="font-medium text-foreground group-hover:text-primary transition-colors">
                     {post.author.name}
@@ -87,8 +81,8 @@ export function FeaturedPost({
           <Image
             src={post.coverImage}
             alt={post.title}
-            width={500}
-            height={500}
+            width={700}
+            height={700}
             className="order-1 lg:order-2 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-2xl"
           />
 

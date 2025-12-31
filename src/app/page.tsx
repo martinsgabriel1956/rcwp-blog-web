@@ -15,7 +15,7 @@ export default function HomePage() {
           post={blogPosts[0]}
         />
       )}
-      <div className="px-44 py-8">
+      <div className="container py-8">
         <h2 className="text-2xl md:text-3xl font-display font-semibold text-foreground mb-6">
           Últimos Artigos
         </h2>

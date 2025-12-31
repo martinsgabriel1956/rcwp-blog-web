@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, Search, X } from "lucide-react";
+import { Menu, Phone, Search, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "../ui/button";
@@ -24,16 +24,12 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <Link
             href="/"
-            className="flex items-center gap-3 hover:opacity-90 transition-opacity"
+            className="hover:opacity-90 transition-opacity inline-block max-w-[200px]"
           >
-            <div>
-              <h1 className="text-xl font-display font-bold text-foreground leading-tight">
-                Revival Core
-              </h1>
-              <p className="text-xs text-muted-foreground">
-                Wellness Physiotherapy
-              </p>
-            </div>
+            <h1 className="text-xl font-display font-bold text-foreground leading-tight">
+              Revival Core
+              Wellness Physiotherapy
+            </h1>
           </Link>
 
           <div className="flex items-center gap-3">
@@ -53,17 +49,22 @@ export function Header() {
             <Button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="md:hidden p-2.5 rounded-xl hover:bg-muted transition-colors"
+              size="icon"
+              variant="ghost"
             >
               <Search className="w-5 h-5 text-foreground" />
             </Button>
 
             <Link href={whatsappLink} target="_blank" className="hidden lg:flex btn btn-primary text-sm py-2.5 px-5">
-              Agendar Consulta
+              <Phone className="w-4 h-4" />
+              Entre em contato
             </Link>
 
             <Button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-2.5 rounded-xl hover:bg-muted transition-colors"
+              size="icon"
+              variant="ghost"
             >
               {isMenuOpen ? (
                 <X className="w-5 h-5 text-foreground" />
@@ -118,7 +119,8 @@ export function Header() {
               ))} */}
             </nav>
             <Link href={whatsappLink} target="_blank" className="btn btn-primary w-full text-sm">
-              Agendar Consulta
+              <Phone className="w-4 h-4" />
+              Entre em contato
             </Link>
           </div>
         )}
