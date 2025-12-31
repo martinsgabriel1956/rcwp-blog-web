@@ -30,6 +30,9 @@ export interface BlogPost {
   status: 'draft' | 'published';
   metaTitle?: string;
   metaDescription?: string;
+  is_active: boolean;
+  is_published: boolean;
+  created_at: string;
 }
 
 export type FeaturedPostProps = {

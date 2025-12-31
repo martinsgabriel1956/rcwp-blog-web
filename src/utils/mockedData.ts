@@ -110,6 +110,9 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Dor nas Costas: Causas e Tratamento Fisioterapêutico",
     metaDescription:
       "Entenda as causas da dor nas costas e como a fisioterapia pode ajudar no tratamento e prevenção. Dicas práticas de especialistas.",
+    is_active: true,
+    is_published: true,
+    created_at: "2024-12-10T10:00:00Z",
   },
   {
     id: "2",
@@ -149,6 +152,9 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Técnicas de Reabilitação: Recuperação Total",
     metaDescription:
       "Saiba como as técnicas de reabilitação atuam na recuperação completa. Métodos e resultados esperados.",
+    is_active: true,
+    is_published: true,
+    created_at: "2024-12-08T14:30:00Z",
   },
   {
     id: "3",
@@ -183,6 +189,9 @@ export const blogPosts: BlogPost[] = [
     views: 1567,
     readTime: 7,
     status: "published",
+    is_active: true,
+    is_published: true,
+    created_at: "2024-12-05T09:15:00Z",
   },
   {
     id: "4",
@@ -217,6 +226,9 @@ export const blogPosts: BlogPost[] = [
     views: 723,
     readTime: 6,
     status: "published",
+    is_active: true,
+    is_published: true,
+    created_at: "2024-12-03T11:00:00Z",
   },
   {
     id: "5",
@@ -250,6 +262,9 @@ export const blogPosts: BlogPost[] = [
     views: 634,
     readTime: 9,
     status: "published",
+    is_active: true,
+    is_published: true,
+    created_at: "2024-12-01T08:45:00Z",
   },
   {
     id: "6",
@@ -287,5 +302,8 @@ export const blogPosts: BlogPost[] = [
     views: 2341,
     readTime: 5,
     status: "published",
+    is_active: true,
+    is_published: true,
+    created_at: "2024-11-28T16:00:00Z",
   },
 ];

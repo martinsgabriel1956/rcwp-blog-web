@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes, ReactNode } from "react";
 import type { Control, FieldValues, Path } from "react-hook-form";
 import {
   FormControl,
@@ -20,6 +20,9 @@ interface InputProps<T extends FieldValues>
   isHidden?: string;
   onChangeValue?: (value: any) => void;
   classLabel?: string;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
+  classNameInputWrapper?: string;
 }
 
 export const InputDefault = <T extends FieldValues>({
@@ -31,9 +34,13 @@ export const InputDefault = <T extends FieldValues>({
   isHidden = "",
   onChangeValue,
   classLabel,
+  leftIcon,
+  rightIcon,
+  classNameInputWrapper,
   ...props
 }: InputProps<T>) => {
   const isReadOnly = props.readOnly;
+  const hasIcons = leftIcon || rightIcon;
 
   return (
     <FormField
@@ -44,29 +51,53 @@ export const InputDefault = <T extends FieldValues>({
           ? formatValue(field.value)
           : field.value;
 
+        const inputElement = (
+          <Input
+            {...field}
+            {...props}
+            ref={field.ref}
+            className={cn(
+              "m-0",
+              leftIcon && "pl-10",
+              rightIcon && "pr-10"
+            )}
+            {...(isReadOnly
+              ? {
+                readOnly: true,
+                defaultValue: formattedValue,
+              }
+              : {
+                value: formattedValue,
+                onChange: (e) => {
+                  const newValue = e.target.value;
+                  field.onChange(newValue);
+                  if (onChangeValue) onChangeValue(newValue);
+                },
+              })}
+          />
+        );
+
         return (
           <FormItem className={cn(`${isHidden} space-y-0 w-full`, className)}>
             <FormLabel className={cn(classLabel)}>{label}</FormLabel>
             <FormControl>
-              <Input
-                {...field}
-                {...props}
-                ref={field.ref}
-                className="m-0"
-                {...(isReadOnly
-                  ? {
-                    readOnly: true,
-                    defaultValue: formattedValue,
-                  }
-                  : {
-                    value: formattedValue,
-                    onChange: (e) => {
-                      const newValue = e.target.value;
-                      field.onChange(newValue);
-                      if (onChangeValue) onChangeValue(newValue);
-                    },
-                  })}
-              />
+              {hasIcons ? (
+                <div className={cn("relative", classNameInputWrapper)}>
+                  {leftIcon && (
+                    <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none">
+                      {leftIcon}
+                    </div>
+                  )}
+                  {inputElement}
+                  {rightIcon && (
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                      {rightIcon}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                inputElement
+              )}
             </FormControl>
             <FormMessage />
           </FormItem>
